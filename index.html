@@ -314,8 +314,30 @@
   </p>
 </section>
 
-  <a class="ext-btn" href="#top" style="align-self:flex-start;">Lihat detail</a>
+  <script>
+  // attach smooth-scroll-to-top for the new button
+  (function(){
+    const btn = document.getElementById('backToTop');
+    if(!btn) return;
+    btn.addEventListener('click', (e) => {
+      // visual cue: small scale animation for click feedback
+      btn.animate([{ transform: 'scale(1)' }, { transform: 'scale(.98)' }, { transform: 'scale(1)' }], { duration: 160 });
 
+      // smooth scroll to top, then set focus to first h1 for accessibility
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // After scroll finishes (best-effort), focus the page heading for screen-readers
+      // fallback timeout ~600ms (depends on page length); harmless if early.
+      setTimeout(() => {
+        const firstHeading = document.querySelector('header.app-header h1');
+        if (firstHeading && typeof firstHeading.focus === 'function') {
+          firstHeading.setAttribute('tabindex','-1');
+          firstHeading.focus({preventScroll:true});
+        }
+      }, 700);
+    });
+  })();
+</script>
     <!-- Footer -->
     <footer>
       &copy; Racikan Nusantara 2025
