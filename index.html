@@ -255,9 +255,6 @@
       </div>
     </section>
 
-    <!-- Quote / text -->
-    <section class="quote">berpikir keras dan hasil pun mengkhianati</section>
-
     <!-- Text + image + external button -->
     <section class="card text-btn">
       <div style="display:flex;flex-direction:column;gap:10px;">
@@ -315,29 +312,44 @@
 </section>
 
 <!-- Tombol Scroll ke Atas -->
-    <button id="scrollToTopBtn" title="Kembali ke Atas">↑</button>
+    <button id="scrollToTopBtn" title="Kembali ke Atas">Kembali</button>
 
-    <script>
-        // Ambil elemen tombol
-        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+<style>
+  .back-to-top {
+    margin: 40px auto;
+    width: 280px;
+    height: 80px;
+    background-color: #f68a8a;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-weight: 700;
+    font-size: 24px;
+    color: white;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  .back-to-top:hover {
+    background-color: #e36262;
+  }
+</style>
 
-        // Fungsi untuk menampilkan tombol saat scroll ke bawah
-        window.onscroll = function() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                scrollToTopBtn.style.display = "block";
-            } else {
-                scrollToTopBtn.style.display = "none";
-            }
-        };
+<div class="back-to-top" id="backToTopBtn">Kembali</div>
 
-        // Fungsi untuk scroll smooth ke atas saat tombol diklik
-        scrollToTopBtn.onclick = function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // Efek smooth scroll
-            });
-        };
-    </script>
+<script>
+  const backToTopBtn = document.getElementById('backToTopBtn');
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
     <!-- Footer -->
     <footer>
       &copy; Racikan Nusantara 2025
