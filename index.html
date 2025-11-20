@@ -297,8 +297,8 @@
   </div>
 
         <section>
-  <h2>Teh Rempah Herbal</h2>
-  <p>
+  <h2 style="margin:0 0 15px 0;font-family:'Domine', serif-bold;">Teh Rempah Herbal</h2>
+  <p style="margin:0 0 10px 0;font-family:'Roboto', medium;">
     Nikmati campuran rempah tradisional yang menghangatkan tubuh, membantu relaksasi,
     dan menjaga kebugaran. Perpaduan aroma alami dan rasa yang lembut bikin tubuh
     lebih fresh dan ringan.
@@ -306,38 +306,38 @@
 </section>
 
 <section>
-  <h2>Rendam Kaki Rempah</h2>
-  <p>
+  <h2 style="margin:0 0 15px 0;font-family:'Domine', serif-bold;">Rendam Kaki Rempah</h2>
+  <p style="margin:0 0 10px 0;font-family:'Roboto', medium;">
     Perawatan relaksasi alami buat ngurangin pegal, melancarkan peredaran darah, dan
     bikin kaki kembali segar. Perpaduan rempah hangat bantu merilekskan tubuh dari
     ujung kaki.
   </p>
 </section>
 
-  <script>
-  // attach smooth-scroll-to-top for the new button
-  (function(){
-    const btn = document.getElementById('backToTop');
-    if(!btn) return;
-    btn.addEventListener('click', (e) => {
-      // visual cue: small scale animation for click feedback
-      btn.animate([{ transform: 'scale(1)' }, { transform: 'scale(.98)' }, { transform: 'scale(1)' }], { duration: 160 });
+<!-- Tombol Scroll ke Atas -->
+    <button id="scrollToTopBtn" title="Kembali ke Atas">↑</button>
 
-      // smooth scroll to top, then set focus to first h1 for accessibility
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    <script>
+        // Ambil elemen tombol
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-      // After scroll finishes (best-effort), focus the page heading for screen-readers
-      // fallback timeout ~600ms (depends on page length); harmless if early.
-      setTimeout(() => {
-        const firstHeading = document.querySelector('header.app-header h1');
-        if (firstHeading && typeof firstHeading.focus === 'function') {
-          firstHeading.setAttribute('tabindex','-1');
-          firstHeading.focus({preventScroll:true});
-        }
-      }, 700);
-    });
-  })();
-</script>
+        // Fungsi untuk menampilkan tombol saat scroll ke bawah
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        // Fungsi untuk scroll smooth ke atas saat tombol diklik
+        scrollToTopBtn.onclick = function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Efek smooth scroll
+            });
+        };
+    </script>
     <!-- Footer -->
     <footer>
       &copy; Racikan Nusantara 2025
