@@ -9,36 +9,22 @@
   <!-- Domine from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- If you have Larsseit webfont files, you can @font-face them here.
-       Otherwise we fall back to Inter / system sans. -->
   <style>
-    /* Example @font-face if you host Larsseit yourself:
-    @font-face {
-      font-family: 'Larsseit';
-      src: url('/fonts/Larsseit-Regular.woff2') format('woff2'),
-           url('/fonts/Larsseit-Regular.woff') format('woff');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-    */
-
     :root{
       --bg: #F59393;
       --text: #FFFFFF;
-      --max-width: 740px; /* keep mobile-ish */
+      --max-width: 740px;
       --radius: 14px;
     }
 
-    /* Mobile-first layout */
-    html,body{
-      height:100%;
-      margin:0;
-      font-family: "Larsseit", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    html, body{
+      height: 100%;
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .wrap{
@@ -48,80 +34,79 @@
       box-sizing: border-box;
     }
 
-    /* Header */
+    /* Header - Centered */
     header.app-header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:14px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      padding: 10px 0;
+      background: rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     .brand h1{
-      margin:0;
-      font-family: 'Domine', serif; /* headline font */
-      font-size:20px;
-      letter-spacing:0.6px;
+      margin: 0;
+      font-family: 'Domine', serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
-    .search-btn{
-      background: rgba(255,255,255,0.12);
-      color:var(--text);
-      border: none;
-      padding:8px 12px;
-      border-radius:10px;
-      display:flex;
-      align-items:center;
-      gap:8px;
-      font-weight:600;
-      cursor:pointer;
-      backdrop-filter: blur(6px);
-    }
-
-    .search-btn svg{ width:18px; height:18px; display:block; }
-
-    /* Card image with aspect ratio 3:4 */
+    /* Card with enhanced visual appeal */
     .card{
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.08);
       border-radius: calc(var(--radius) + 6px);
-      padding:12px;
-      margin-bottom:14px;
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
 
     .img-3-4{
-      width:100%;
-      aspect-ratio: 3 / 4; /* modern browsers */
-      border-radius: 12px;
-      overflow:hidden;
-      background: #fff3; /* fallback */
-      display:block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.1);
+      display: block;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
     }
     .img-3-4 img{
-      width:100%;
-      height:100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      display:block;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .img-3-4:hover img {
+      transform: scale(1.05);
     }
 
     .desc{
-      margin-top:10px;
-      font-size:14px;
-      line-height:1.4;
-      color:var(--text);
-      opacity:0.95;
+      margin-top: 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--text);
+      opacity: 0.95;
     }
 
-    /* Two-column stacked sections (image + text) - mobile stacked, horizontally on wider */
+    /* Pair sections with better spacing */
     .pair {
-      display:grid;
+      display: grid;
       grid-template-columns: 1fr;
-      gap:10px;
-      align-items:center;
-      margin-bottom:12px;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 18px;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      padding: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     @media(min-width:640px){
       .pair{
@@ -129,87 +114,107 @@
       }
     }
 
-    .pair .img-3-4 { height: auto; aspect-ratio:3/4; }
+    .pair .img-3-4 { aspect-ratio: 3/4; }
 
-    /* quote area */
-    .quote{
-      margin: 14px 0;
-      padding:12px;
-      font-style: italic;
-      text-align:center;
-      background: rgba(0,0,0,0.06);
-      border-radius: 10px;
-      color:var(--text);
-      font-size:15px;
-    }
-
-    /* text+image with external button */
+    /* Text-btn with button enhancement */
     .text-btn {
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin-bottom:14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
     }
     .ext-btn{
-      background: rgba(255,255,255,0.12);
-      border: none;
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:10px;
-      font-weight:700;
-      cursor:pointer;
-      text-decoration:none;
-      text-align:center;
-      display:inline-block;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .ext-btn:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
+      transform: translateY(-1px);
     }
 
-    /* Carousel styles */
+    /* Carousel with subtle animation */
     .carousel{
-      position:relative;
-      overflow:hidden;
-      border-radius: 12px;
-      margin-bottom:14px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
     .carousel-track{
-      display:flex;
-      transition: transform 600ms ease;
+      display: flex;
+      transition: transform 0.6s ease;
       will-change: transform;
     }
     .carousel-slide{
-      min-width:100%;
-      box-sizing:border-box;
+      min-width: 100%;
+      box-sizing: border-box;
     }
     .carousel-slide img{
-      width:100%;
-      height:auto;
-      display:block;
-      object-fit:cover;
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
     }
-    /* small dots */
     .dots{
-      display:flex;
-      gap:6px;
-      justify-content:center;
-      margin-top:8px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 10px;
     }
     .dot{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background: rgba(255,255,255,0.35);
-      opacity:0.9;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      opacity: 0.9;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
-    .dot.active{ background: #fff; }
+    .dot.active{ background: #fff; transform: scale(1.2); }
+    .dot:hover { background: rgba(255,255,255,0.6); }
+
+    /* Back to top button */
+    .back-to-top {
+      margin: 20px auto;
+      width: 280px;
+      height: 45px;
+      background: linear-gradient(135deg, #e89292, #f09292);
+      border-radius: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      font-weight: 600;
+      font-size: 16px;
+      color: white;
+      user-select: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .back-to-top:hover {
+      background: linear-gradient(135deg, #f09292, #ff9a9a);
+      transform: translateY(-2px);
+    }
 
     footer{
-      text-align:center;
-      padding:18px 0 40px;
-      font-size:13px;
-      opacity:0.95;
+      text-align: center;
+      padding: 20px 0 40px;
+      font-size: 14px;
+      opacity: 0.9;
+      background: rgba(0,0,0,0.05);
+      border-radius: var(--radius);
+      margin-top: 20px;
     }
-
-    /* utility */
-    .muted{ opacity:0.9; font-size:13px; }
   </style>
 </head>
 <body>
@@ -217,19 +222,16 @@
     <!-- Header -->
     <header class="app-header" role="banner">
       <div class="brand" aria-label="Racikan Nusantara brand">
-        <!-- logo placeholder -->
-     
-        <h1 style="align-items: center;font-size:25px;">RACIKAN NUSANTARA</h1>
+        <h1>RACIKAN NUSANTARA</h1>
       </div>
     </header>
 
     <!-- Main banner with 3:4 image -->
     <section class="card" aria-labelledby="main-banner-title">
       <div class="img-3-4">
-        <!-- placeholder img: replace with your image -->
         <img src="anjay.png" alt="Main banner Racikan Nusantara">
       </div>
-      <div class="desc" id="main-banner-title" style="font-size:17px;font-family:'Roboto', medium;">
+      <div class="desc" id="main-banner-title">
         Racikan Nusantara hadir sebagai solusi minuman herbal alami yang mengutamakan kesehatan dan gaya hidup seimbang. Dibuat dari rempah-rempah pilihan khas Indonesia, racikan ini diramu secara alami tanpa bahan kimia tambahan. Rasanya segar, hangat, dan menenangkan, sekaligus membantu memperlancar peredaran darah. Dengan cita rasa rempah yang khas, Racikan Nusantara bukan sekadar teh herbal, tapi juga warisan nusantara yang menyehatkan tubuh dan menyegarkan pikiran.
       </div>
     </section>
@@ -240,8 +242,8 @@
         <img src="digunakan.png" alt="Produk 1">
       </div>
       <div class="desc">
-        <h2 style="margin:0 0 15px 0;font-family:'Domine', serif-bold;">Teh Rempah Herbal</h2>
-        <h3 style="margin:0 0 10px 0;font-family:'Roboto', medium;">Kombinasi jahe, rosella, dan bunga telang untuk hangatkan badan dan menenangkan.</h3>
+        <h2>Teh Rempah Herbal</h2>
+        <p>Kombinasi jahe, rosella, dan bunga telang untuk hangatkan badan dan menenangkan.</p>
       </div>
     </section>
 
@@ -251,33 +253,27 @@
         <img src="7.png" alt="Produk 2">
       </div>
       <div class="desc">
-        <h2 style="margin:0 0 15px 0;font-family:'Domine', serif-bold;">Rendam Kaki Rempah</h2>
-        <h3 style="margin:0 0 10px 0;font-family:'Roboto', medium;">Perpaduan rempah yang membantu relaksasi setelah hari panjang.</h3>
+        <h2>Rendam Kaki Rempah</h2>
+        <p>Perpaduan rempah yang membantu relaksasi setelah hari panjang.</p>
       </div>
     </section>
 
     <!-- Text + image + external button -->
     <section class="card text-btn">
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div class="img-3-4">
-          <img src="1.jpg" alt="Featured">
-        </div>
-
-       <div class="desc">
-        <h2 style="margin:0 0 15px 0;font-family:'Domine', serif-bold;">Lebih dari sekedar rempah.</h2>
-        <h3 style="margin:0 0 10px 0;font-family:'Roboto', medium;">Produk kami dipilih dari sumber yang bertanggung jawab dan diproses dengan standar kebersihan tinggi.</h3>
+      <div class="img-3-4">
+        <img src="1.jpg" alt="Featured">
       </div>
+      <div class="desc">
+        <h2>Lebih dari sekedar rempah.</h2>
+        <p>Produk kami dipilih dari sumber yang bertanggung jawab dan diproses dengan standar kebersihan tinggi.</p>
       </div>
-
-      <!-- External link button (replace href) -->
       <a class="ext-btn" href="https://wa.me/6285706707795" target="_blank" rel="noopener noreferrer">Buka halaman produk</a>
     </section>
 
-    <!-- Carousel with 6 images (1920x1080 placeholders) -->
+    <!-- Carousel with 6 images -->
     <section aria-label="Gallery carousel">
       <div class="carousel" id="carousel">
         <div class="carousel-track" id="carouselTrack">
-          <!-- 6 slides -->
           <div class="carousel-slide"><img src="p1.png" alt="gallery 1"></div>
           <div class="carousel-slide"><img src="p2.png" alt="gallery 2"></div>
           <div class="carousel-slide"><img src="p3.png" alt="gallery 3"></div>
@@ -289,66 +285,8 @@
       <div class="dots" id="dots"></div>
     </section>
 
-<section class="pair card">
-  <div class="img-3-4">
-    <img src="digunakan.png" alt="Teh Rempah Herbal">
-  </div>
-
-        <section>
-  <h2 style="margin:0 0 15px 0;font-family:'Domine', serif-bold;">Teh Rempah Herbal</h2>
-  <p style="margin:0 0 10px 0;font-family:'Roboto', medium;">
-    Nikmati campuran rempah tradisional yang menghangatkan tubuh, membantu relaksasi,
-    dan menjaga kebugaran. Perpaduan aroma alami dan rasa yang lembut bikin tubuh
-    lebih fresh dan ringan.
-  </p>
-</section>
-
-<section>
-  <h2 style="margin:0 0 15px 0;font-family:'Domine', serif-bold;">Rendam Kaki Rempah</h2>
-  <p style="margin:0 0 10px 0;font-family:'Roboto', medium;">
-    Perawatan relaksasi alami buat ngurangin pegal, melancarkan peredaran darah, dan
-    bikin kaki kembali segar. Perpaduan rempah hangat bantu merilekskan tubuh dari
-    ujung kaki.
-  </p>
-</section>
-
-<!-- Tombol Scroll ke Atas -->
-
-<style>
-  .back-to-top {
-    margin: 20px auto;
-    width: 280px;
-    height: 40px;
-    background-color: #e89292;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    font-weight: 500;
-    font-size: 15px;
-    color: white;
-    user-select: none;
-    transition: background-color 0.3s ease;
-  }
-  .back-to-top:hover {
-    background-color: #f09292;
-  }
-</style>
-
-<div class="back-to-top" id="backToTopBtn">Kembali</div>
-
-<script>
-  const backToTopBtn = document.getElementById('backToTopBtn');
-
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-</script>
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTopBtn">Kembali</div>
 
     <!-- Footer -->
     <footer>
@@ -357,7 +295,7 @@
   </div>
 
   <script>
-    // Simple auto-sliding carousel (loops)
+    // Carousel functionality
     (function(){
       const track = document.getElementById('carouselTrack');
       const slides = Array.from(track.children);
@@ -366,10 +304,9 @@
       const total = slides.length;
       const intervalMs = 3000;
 
-      // create dots
       slides.forEach((_, i) => {
         const d = document.createElement('div');
-        d.className = 'dot' + (i===0? ' active':'');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
         d.dataset.index = i;
         d.addEventListener('click', () => {
           goTo(i);
@@ -380,7 +317,6 @@
 
       function update(){
         track.style.transform = `translateX(-${current * 100}%)`;
-        // update dots
         Array.from(dotsWrap.children).forEach((dot, i) => {
           dot.classList.toggle('active', i === current);
         });
@@ -391,35 +327,38 @@
         update();
       }
 
-      let timer = setInterval(()=> { current = (current + 1) % total; update(); }, intervalMs);
+      let timer = setInterval(() => { current = (current + 1) % total; update(); }, intervalMs);
 
       function resetAuto(){
         clearInterval(timer);
-        timer = setInterval(()=> { current = (current + 1) % total; update(); }, intervalMs);
+        timer = setInterval(() => { current = (current + 1) % total; update(); }, intervalMs);
       }
 
-      // Pause on hover/touch
       const carousel = document.getElementById('carousel');
       carousel.addEventListener('mouseenter', () => clearInterval(timer));
       carousel.addEventListener('mouseleave', resetAuto);
 
-      // initial
       update();
 
-      // accessibility: swipe left/right for touch devices
       let startX = 0;
-      carousel.addEventListener('touchstart', (e)=> { startX = e.touches[0].clientX; }, {passive:true});
-      carousel.addEventListener('touchend', (e)=> {
+      carousel.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      carousel.addEventListener('touchend', (e) => {
         let endX = e.changedTouches[0].clientX;
-        if (endX - startX > 40) { // swipe right
+        if (endX - startX > 40) {
           goTo(current - 1);
           resetAuto();
-        } else if (startX - endX > 40) { // swipe left
+        } else if (startX - endX > 40) {
           goTo(current + 1);
           resetAuto();
         }
-      }, {passive:true});
+      }, { passive: true });
     })();
+
+    // Back to top
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
